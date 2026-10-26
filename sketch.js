@@ -1,8 +1,8 @@
 let currentMode = "Fold";
 let currentView = "home";
-let isNightMode = false;
+let isNightMode = true;
 // Canvas colors are read from the same CSS palette as the interface.
-let artworkPalette = { paper: "#FFFFFF", ink: "#000000", text: "#191919" };
+let artworkPalette = { paper: "#000000", ink: "#FFFFFF", text: "#E6E6E6" };
 let ui;
 let canvasObserver;
 let foldMesh;
@@ -207,7 +207,7 @@ function syncPageView(moveFocus = false) {
 function setupThemeToggle() {
   ui.themeToggle = document.getElementById("theme-toggle");
   ui.themeToggle.addEventListener("click", () => setNightMode(!isNightMode));
-  setNightMode(false); // Every page load begins in day mode.
+  setNightMode(isNightMode); // Every page load begins in night mode.
 }
 
 function setNightMode(enabled) {
