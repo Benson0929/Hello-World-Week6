@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moiré Time — Four Ways of Seeing Time</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js" defer></script>
+  <script src="sketch.js" defer></script>
+</head>
+<body>
+  <main id="site" class="site" data-view="home">
+    <section class="artwork" aria-label="Artwork">
+      <div id="canvas-container"></div>
+    </section>
+    <aside class="sidebar">
+      <section class="mode-panel">
+        <div class="panel-header">
+          <h1><a class="home-link" href="#home" aria-label="Moiré Time — home">MOIRÉ TIME</a></h1>
+          <button id="theme-toggle" class="theme-toggle" type="button"
+            aria-label="Night mode" aria-pressed="false" title="Switch to night mode">
+            <span class="theme-day">DAY</span><span aria-hidden="true"> / </span><span class="theme-night">NIGHT</span>
+          </button>
+        </div>
+        <div id="study-info" hidden>
+          <h2 id="mode-title" aria-label="FOLD">
+            <span id="mode-selector" class="rotary-selector" role="spinbutton" tabindex="0"
+              aria-label="Visual mode" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"
+              aria-valuetext="FOLD" aria-describedby="mode-selector-help">
+              <span id="mode-rotor" class="rotary-rotor" aria-hidden="true">FOLD</span>
+            </span>
+          </h2>
+          <p id="mode-selector-help" class="visually-hidden">Drag left for the next mode or right for the previous mode. Use the left and right arrow keys when focused.</p>
+          <div class="model-info">
+            <p class="model-label">MATHEMATICAL MODEL</p>
+            <p id="model-name"></p>
+          </div>
+          <p id="mode-description"></p>
+          <a class="back-home" href="#home"><span aria-hidden="true">←</span> BACK TO HOME</a>
+        </div>
+      </section>
+      <section class="live-panel">
+        <div class="clock-section">
+          <p class="eyebrow">Local time</p>
+          <time id="clock"></time>
+          <div id="clock-meta" class="clock-meta">
+            <span id="clock-zone"></span>
+            <span id="clock-date"></span>
+          </div>
+        </div>
+        <div id="study-parameters" hidden>
+          <h3 class="eyebrow parameters-heading">Live time parameters</h3>
+          <dl class="time-mapping" aria-label="Live time parameters">
+            <div><dt>Hours</dt><dd id="hours-control"></dd></div>
+            <div><dt>Minutes</dt><dd id="minutes-control"></dd></div>
+            <div><dt>Seconds</dt><dd id="seconds-control"></dd></div>
+          </dl>
+        </div>
+      </section>
+      <a id="enter-studies" class="entry-link" href="#studies">
+        <span>ENTER THE FOUR STUDIES</span>
+      </a>
+    </aside>
+  </main>
+</body>
+</html>
