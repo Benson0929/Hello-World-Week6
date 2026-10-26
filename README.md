@@ -1,3 +1,5 @@
+https://benson0929.github.io/Hello-World-Week6/
+
 Moiré Time
 Four Mathematical Studies of Time
 Moiré Time is a generative clock that turns real local time into four different moving geometric studies. Instead of relying only on numbers or clock hands, it explores how hours, minutes, and seconds can shape lines, surfaces, and optical patterns.
