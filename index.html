@@ -2,7 +2,8 @@
 <html lang="en" data-theme="night">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
   <title>Moiré Time — Four Ways of Seeing Time</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js" defer></script>
@@ -23,14 +24,19 @@
           </button>
         </div>
         <div id="study-info" hidden>
-          <h2 id="mode-title" aria-label="FOLD">
-            <span id="mode-selector" class="rotary-selector" role="spinbutton" tabindex="0"
-              aria-label="Visual mode" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"
-              aria-valuetext="FOLD" aria-describedby="mode-selector-help">
-              <span id="mode-rotor" class="rotary-rotor" aria-hidden="true">FOLD</span>
-            </span>
-          </h2>
-          <p id="mode-selector-help" class="visually-hidden">Drag left for the next mode or right for the previous mode. Use the left and right arrow keys when focused.</p>
+          <div class="study-selector">
+            <button id="previous-mode" class="mobile-mode-button" type="button" aria-label="Previous study">‹</button>
+            <h2 id="mode-title" aria-label="FOLD">
+              <span id="mode-selector" class="rotary-selector" role="spinbutton" tabindex="0"
+                aria-label="Visual mode" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0"
+                aria-valuetext="FOLD" aria-describedby="mode-selector-help">
+                <span id="mode-rotor" class="rotary-rotor" aria-hidden="true">FOLD</span>
+              </span>
+            </h2>
+            <button id="next-mode" class="mobile-mode-button" type="button" aria-label="Next study">›</button>
+            <p class="mobile-swipe-hint" aria-hidden="true">SWIPE TO CHANGE STUDY</p>
+          </div>
+          <p id="mode-selector-help" class="visually-hidden">Swipe or drag left for the next study, or right for the previous study. Use the arrow keys when focused, or the previous and next study buttons on mobile.</p>
           <div class="model-info">
             <p class="model-label">MATHEMATICAL MODEL</p>
             <p id="model-name"></p>
@@ -57,9 +63,16 @@
           </dl>
         </div>
       </section>
-      <a id="enter-studies" class="entry-link" href="#studies">
-        <span>ENTER THE FOUR STUDIES</span>
-      </a>
+      <section class="home-entry" aria-labelledby="home-intro-title">
+        <a id="enter-studies" class="entry-link" href="#studies">
+          <span>ENTER THE FOUR STUDIES</span>
+          <span class="entry-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="home-intro">
+          <h2 id="home-intro-title">Time, translated into geometry.</h2>
+          <p>Moiré Time is a generative clock that transforms real time into continuously evolving geometric patterns through four mathematical systems. Built with p5.js, it maps hours, minutes, and seconds to different visual parameters, exploring how time can be experienced beyond numbers and clock hands.</p>
+        </div>
+      </section>
     </aside>
   </main>
 </body>

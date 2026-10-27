@@ -169,6 +169,9 @@ function setup() {
     document.getElementById("mode-rotor"),
     (name) => { if (name !== currentMode) selectMode(name); }
   );
+  // Tappable alternatives to swiping, including for VoiceOver users.
+  document.getElementById("previous-mode").addEventListener("click", () => rotarySelector.step(-1));
+  document.getElementById("next-mode").addEventListener("click", () => rotarySelector.step(1));
   selectMode(currentMode);
   // Match the actual available artwork area, rather than a width-only CSS scale.
   canvasObserver = new ResizeObserver(([entry]) => {
@@ -199,6 +202,8 @@ function syncPageView(moveFocus = false) {
   frameRate(home ? 30 : 60);
   syncCanvasSize();
   if (moveFocus) {
+    // Return to the top of the mobile reading flow when entering/leaving a study.
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     const target = home ? ui.enterStudies : document.getElementById("mode-selector");
     target.focus({ preventScroll: true });
   }
@@ -222,6 +227,7 @@ function setNightMode(enabled) {
   };
   ui.themeToggle.setAttribute("aria-pressed", String(enabled));
   ui.themeToggle.title = enabled ? "Switch to day mode" : "Switch to night mode";
+  document.querySelector('meta[name="theme-color"]').content = artworkPalette.paper;
 }
 
 function canvasPixelDensity() {
@@ -1391,6 +1397,11 @@ function createRotarySelector(element, rotor, onCommit) {
   announceMode();
 
   return {
+    step(direction) {
+      releasePointer();
+      const base = state.targetAngle ?? Math.round(state.angle / 90) * 90;
+      snapTo(base - direction * 90);
+    },
     setMode(name) {
       const index = names.indexOf(name);
       if (index < 0) return;
